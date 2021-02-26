@@ -28,17 +28,17 @@ export default {
 
   data () {
     return {
-      username: 'Nathan',
-      password: 'batata',
-      confirm_password: 'batata',
-      email: 'nathanlemos.ec@gmail.com'
+      username: '',
+      password: '',
+      confirm_password: '',
+      email: ''
     }
   },
 
   methods: {
     signup () {
       this.axios.post('auth/register', this.$data).then(res => {
-        alert(res)
+        this.$router.push({ name: 'signin' })
       }).catch(err => {
         console.log('error', err.response)
       })
