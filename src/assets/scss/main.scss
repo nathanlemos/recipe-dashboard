@@ -72,6 +72,8 @@ body, html {
 .navbar {
     width: 100%;
     background-color: $primary;
+    position: fixed;
+    top: 0;
 
     .navbar-container {
         a {
@@ -94,7 +96,7 @@ body, html {
     max-width: 1024px;
     margin: 0 auto;
     padding: 15px;
-    margin-top: 30px;
+    margin-top: 60px;
 }
 
 .grid {
@@ -165,6 +167,10 @@ body, html {
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none;
+}
+
+.text-center {
+    text-align: center;
 }
 
 .lg-only {

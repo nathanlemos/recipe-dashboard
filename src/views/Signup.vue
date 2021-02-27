@@ -1,25 +1,52 @@
 <template>
+  <div class="inner-container">
     <form action="javascript:;" @submit.prevent="signup()">
-        <div>
-            <label for="">Usename:</label>
-            <input type="text" placeholder="Username" v-model="username">
+      <div class="grid">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="grid">
+            <!-- init -->
+            <div class="col-12">
+              <h1 class="h1">
+                <strong>New</strong> account
+              </h1>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="">Usename:</label>
+                  <input type="text" placeholder="Username" v-model="username">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="">E-mail:</label>
+                  <input type="text" placeholder="E-mail" v-model="email">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="">Password:</label>
+                <input type="password" placeholder="Password" v-model="password">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="">Confirm password:</label>
+                <input type="password" placeholder="Password" v-model="confirm_password">
+              </div>
+            </div>
+            <div class="col-12">
+              <button class="btn" type="submit">Create account</button>
+            </div>
+            <div class="col-12 text-center">
+              <router-link to="/signin">Already have an account?</router-link>
+            </div>
+            <!-- end -->
+          </div>
         </div>
-        <div>
-            <label for="">E-mail:</label>
-            <input type="text" placeholder="E-mail" v-model="email">
-        </div>
-        <div>
-            <label for="">Password:</label>
-            <input type="text" placeholder="Password" v-model="password">
-        </div>
-        <div>
-            <label for="">Confirm password:</label>
-            <input type="text" placeholder="Password" v-model="confirm_password">
-        </div>
-        <div>
-            <button type="submit">Create account</button>
-        </div>
+      </div>
     </form>
+  </div>
 </template>
 
 <script>

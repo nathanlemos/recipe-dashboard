@@ -13,7 +13,7 @@ const routes = [
       { path: '/signup', name: 'signup', component: () => import('../views/Signup.vue') }
     ],
     beforeEnter (to, from, next) {
-      next(!store.getters.getUser ? null : { name: 'home' })
+      next(!store.getters.getUser ? null : { path: '/dashboard' })
     }
   },
 
@@ -23,7 +23,7 @@ const routes = [
     name: 'Dashboard',
     component: () => import('../layouts/DashboardLayout'),
     children: [
-      { path: '', name: 'home', component: () => import('../views/Home.vue') },
+      // { path: '', name: 'home', component: () => import('../views/Home.vue') },
 
       // Unit routes
       { path: '/unit', name: 'unitList', component: () => import('../views/Unit/List.vue') },
@@ -36,12 +36,12 @@ const routes = [
       { path: '/ingredient/edit/:id', name: 'ingredientFormEdit', component: () => import('../views/Ingredient/Form.vue') },
 
       // Ingredient routes
-      { path: '/recipe', name: 'recipeList', component: () => import('../views/Recipe/List.vue') },
+      { path: '/recipe', name: 'recipeList', alias: '', component: () => import('../views/Recipe/List.vue') },
       { path: '/recipe/add', name: 'recipeFormNew', component: () => import('../views/Recipe/Form.vue') },
       { path: '/recipe/edit/:id', name: 'recipeFormEdit', component: () => import('../views/Recipe/Form.vue') }
     ],
     beforeEnter (to, from, next) {
-      next(store.getters.getUser ? null : { name: 'signin' })
+      next(store.getters.getUser ? null : { path: '/signin' })
     }
   }
 ]
