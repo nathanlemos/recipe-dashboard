@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="inner-container">
+    <h1 class="h1">
+      <strong>{{ isEditing ? 'Update' : 'Create' }}</strong> unit
+    </h1>
     <form action="javascript:;" @submit.prevent="submit()">
-        <div>
+        <div class="form-group">
             <label for="">Name:</label>
             <input type="text" placeholder="Name" v-model="model.name">
         </div>
-        <div>
-            <button type="submit">{{ isEditing ? 'Save' : 'Create' }}</button>
-        </div>
+        <fab icon="&#x2713;" @click="submit" />
     </form>
   </div>
 </template>

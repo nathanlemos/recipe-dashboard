@@ -1,10 +1,11 @@
 <template>
     <div class="fab shadow noselect" @click="click">
-        +
+        {{ icon }}
     </div>
 </template>
 <script>
 export default {
+  props: ['icon'],
   click () {
     this.$emit('click')
   }

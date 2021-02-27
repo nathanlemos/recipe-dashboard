@@ -1,31 +1,45 @@
 <template>
-  <div>
+  <div class="inner-container">
+    <h1 class="h1">
+      <strong>{{ isEditing ? 'Update' : 'Create' }}</strong> ingredient
+    </h1>
+
     <form action="javascript:;" @submit.prevent="submit()">
-        <div>
-            <label for="">Name:</label>
-            <input type="text" placeholder="Name" v-model="model.name">
+      <div class="grid">
+        <div class="col-12">
+          <div class="form-group">
+              <label for="">Name:</label>
+              <input type="text" placeholder="Name" v-model="model.name">
+          </div>
         </div>
-        <div>
-            <label for="">Article number:</label>
-            <input type="text" placeholder="Article number" v-model="model.article_number">
+        <div class="col-12">
+          <div class="form-group">
+              <label for="">Article number:</label>
+              <input type="text" placeholder="Article number" v-model="model.article_number">
+          </div>
         </div>
-        <div>
-            <label for="">Base quantity:</label>
-            <input type="text" placeholder="Base quantity" v-model="model.avg_quantity">
+        <div class="col-4">
+          <div class="form-group">
+              <label for="">Base quantity:</label>
+              <input type="text" placeholder="Base quantity" v-model="model.avg_quantity">
+          </div>
         </div>
-        <div>
-            <label for="">Unit:</label>
-            <select v-model="model.unit_id">
-              <option v-for="unit in unitOptions" :key="unit.value" :value="unit.value">{{unit.label}}</option>
-            </select>
+        <div class="col-4">
+          <div class="form-group">
+              <label for="">Unit:</label>
+              <select v-model="model.unit_id">
+                <option v-for="unit in unitOptions" :key="unit.value" :value="unit.value">{{unit.label}}</option>
+              </select>
+          </div>
         </div>
-        <div>
-            <label for="">Price per base quantity:</label>
-            <input type="text" placeholder="Price per base quantity" v-model="model.cost">
+        <div class="col-4">
+          <div class="form-group">
+              <label for="">Price per base quantity:</label>
+              <input type="text" placeholder="Price per base quantity" v-model="model.cost">
+          </div>
         </div>
-        <div>
-            <button type="submit">{{ isEditing ? 'Save' : 'Create' }}</button>
-        </div>
+      </div>
+      <fab icon="&#x2713;" @click="submit" />
     </form>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <h1 class="h1">
       <strong>Recipes</strong> manager
     </h1>
-    <fab @click="navigateToAdd" />
+    <fab icon="&plus;" @click="navigateToAdd" />
     <table>
       <thead>
         <tr>

@@ -1,8 +1,15 @@
 $primary: #c23616;
 $secondary: #e84118;
 
+$gray1: #dcdde1;
+$gray2: #718093;
+$gray3: #2c3e50;
+$gray4: #222222;
+
+$mobile-breakpoint: 576px;
+
 * {
-    color: #2c3e50;
+    color: $gray3;
 }
 
 body, html {
@@ -11,7 +18,7 @@ body, html {
 }
 
 .h1 {
-    color: #222222;
+    color: $gray4;
     font-weight: lighter;
     text-transform: uppercase;
 
@@ -44,15 +51,59 @@ body, html {
 .inner-container {
     max-width: 1024px;
     margin: 0 auto;
+    padding: 15px;
 }
 
-.row {
-    display: block;
+.grid {
+    display: grid;
+    gap: 15px; 
+    grid-template-columns: 1fr 1fr 1fr
+                           1fr 1fr 1fr
+                           1fr 1fr 1fr
+                           1fr 1fr 1fr;
+
+    @for $i from 1 through 13 {
+        .col-#{$i} {
+            grid-column: span $i;
+        }
+
+    }
 }
 
 .container {
     max-width: 1024px;
     width: 100%;
+}
+
+.form-group {
+    label {
+        display: block;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    input, textarea, select {
+        border: solid 1px $gray2;
+        font-size: 16px;
+        padding: 5px;
+        border-radius: 4px;
+
+        &:focus {
+            outline: none !important;
+            border-color: $secondary;
+        }
+    }
+
+    select {
+        width: 100%;
+    }
+
+    input, textarea {
+        width: -webkit-calc(100% - 10px);
+        width:    -moz-calc(100% - 10px);
+        width:      -o-calc(100% - 10px);
+        width:         calc(100% - 10px);
+    }
 }
 
 .shadow {
@@ -72,3 +123,15 @@ body, html {
           -ms-user-select: none;
               user-select: none;
   }
+
+@media (max-width: #{$mobile-breakpoint}) {
+    .grid {
+        grid-template-columns: 1fr;
+
+        @for $i from 1 through 13 {
+            .col-#{$i} {
+                grid-column: 1;
+            }
+        }
+    }
+}
