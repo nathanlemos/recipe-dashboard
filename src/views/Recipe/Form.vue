@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import { handleResponseError } from '../../helpers'
 import crudMixin from '../../mixins/crud'
+import messageMixin from '../../mixins/message'
 
 const endpoint = 'recipes/'
 
@@ -80,7 +80,7 @@ export default {
 
       request.then(res => {
         this.$router.push({ name: 'recipeList' })
-      }).catch(error => handleResponseError(error))
+      }).catch(error => this.handleResponseError(error))
     },
 
     handleDetailsResponse (response) {
@@ -141,11 +141,11 @@ export default {
         self.ingredientOptions = ingredientOptions
 
         self.beforeRetrieve()
-      }).catch(error => handleResponseError(error))
+      }).catch(error => this.handleResponseError(error))
     }
   },
 
-  mixins: [crudMixin],
+  mixins: [crudMixin, messageMixin],
 
   mounted () {
     this.fetchIngredients()

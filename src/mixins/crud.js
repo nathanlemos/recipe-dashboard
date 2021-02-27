@@ -12,7 +12,6 @@ export default {
 
   methods: {
     retrieve () {
-      console.log('Listou daqui')
       this.axios.get(this.endpoint).then(res => {
         this.collection = res.data
       }).catch(error => this.handleResponseError(error))
@@ -60,7 +59,7 @@ export default {
     },
 
     handleResponseError (error) {
-      console.log('HELPER HANDLE:', error.response)
+      this.handleResponseErrorPayload(error.response)
     }
   }
 }

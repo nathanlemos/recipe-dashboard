@@ -14,6 +14,7 @@
 
 <script>
 import crudMixin from '../../mixins/crud'
+import messageMixin from '../../mixins/message'
 
 export default {
   name: 'UnitForm',
@@ -28,7 +29,7 @@ export default {
     }
   },
 
-  mixins: [crudMixin],
+  mixins: [crudMixin, messageMixin],
 
   mounted () {
     this.beforeRetrieve()

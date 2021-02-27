@@ -19,8 +19,8 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { handleResponseError } from '../helpers'
 import jwtMixin from '../mixins/jwt'
+import messageMixin from '../mixins/message'
 
 export default {
   name: 'Signin',
@@ -40,10 +40,10 @@ export default {
         this.setUser(res.data.user)
         this.setToken(res.data.token)
         this.$router.push({ name: 'home' })
-      }).catch(error => handleResponseError(error))
+      }).catch(error => this.handleResponseErrorPayload(error))
     }
   },
 
-  mixins: [jwtMixin]
+  mixins: [jwtMixin, messageMixin]
 }
 </script>
