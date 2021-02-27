@@ -119,6 +119,7 @@ export default {
       const request = !this.model.id ? this.axios.post(endpoint, this.model) : this.axios.put(endpoint + this.model.id, this.model)
 
       request.then(res => {
+        this.showMessage('success', ['Done!'])
         this.$router.push({ path: this.route })
       }).catch(error => this.handleResponseError(error))
     },

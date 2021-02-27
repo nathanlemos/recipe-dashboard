@@ -3,7 +3,7 @@ export default {
   methods: {
     showMessage (type, messages) {
       let title = 'Success!'
-      let bgColor = '#ffffff'
+      let bgColor = '#27ae60'
       let initialTop = 60
       let id = (+new Date()).toString()
 

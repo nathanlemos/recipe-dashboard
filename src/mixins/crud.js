@@ -62,6 +62,7 @@ export default {
     },
 
     handleSubmitResponse (response) {
+      this.showMessage('success', ['Done!'])
       this.$router.push({ path: this.route })
     },
 
