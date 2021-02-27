@@ -48,6 +48,7 @@
 
 <script>
 import { handleResponseError } from '../../helpers'
+import crudMixin from '../../mixins/crud'
 
 const endpoint = 'recipes/'
 
@@ -55,7 +56,8 @@ export default {
   name: 'RecipeForm',
   data () {
     return {
-      isEditing: false,
+      endpoint: 'recipes/',
+      listViewName: 'recipeList',
       ingredientOptions: [],
       newIngredient: {
         ingredient: null,
@@ -81,11 +83,9 @@ export default {
       }).catch(error => handleResponseError(error))
     },
 
-    details (id) {
-      this.axios.get(endpoint + id).then(res => {
-        this.model = res.data
-        this.ingredients = this.payloadToIngredients(res.data.ingredients)
-      }).catch(error => handleResponseError(error))
+    handleDetailsResponse (response) {
+      this.model = response.data
+      this.ingredients = this.payloadToIngredients(response.data.ingredients)
     },
 
     add () {
@@ -140,13 +140,12 @@ export default {
 
         self.ingredientOptions = ingredientOptions
 
-        if (self.$route.params && self.$route.params.id) {
-          self.details(self.$route.params.id)
-          self.isEditing = true
-        }
+        self.beforeRetrieve()
       }).catch(error => handleResponseError(error))
     }
   },
+
+  mixins: [crudMixin],
 
   mounted () {
     this.fetchIngredients()

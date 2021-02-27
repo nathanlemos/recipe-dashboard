@@ -31,17 +31,16 @@
 </template>
 
 <script>
-import { handleResponseError } from '../../helpers'
-
-const endpoint = 'ingredients/'
+import crudMixin from '../../mixins/crud'
 
 export default {
   name: 'IngredientForm',
   data () {
     return {
+      endpoint: 'ingredients/',
+      listViewName: 'ingredientList',
       unitOptions: [],
       model: {
-        isEditing: false,
         id: null,
         name: '',
         article_number: '',
@@ -52,19 +51,6 @@ export default {
     }
   },
   methods: {
-    submit () {
-      const request = !this.model.id ? this.axios.post(endpoint, this.model) : this.axios.put(endpoint + this.model.id, this.model)
-
-      request.then(res => {
-        this.$router.push({ name: 'ingredientList' })
-      }).catch(error => handleResponseError(error))
-    },
-    details (id) {
-      this.axios.get(endpoint + id).then(res => {
-        this.model = res.data
-      }).catch(error => handleResponseError(error))
-    },
-
     fetchUnits () {
       const self = this
 
@@ -77,14 +63,12 @@ export default {
         })
 
         self.unitOptions = unitOptions
-
-        if (self.$route.params && self.$route.params.id) {
-          self.details(self.$route.params.id)
-          self.isEditing = true
-        }
-      }).catch(error => handleResponseError(error))
+        self.beforeRetrieve()
+      }).catch(error => this.handleResponseError(error))
     }
   },
+
+  mixins: [crudMixin],
 
   mounted () {
     this.fetchUnits()

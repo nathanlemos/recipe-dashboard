@@ -23,34 +23,17 @@
 </template>
 
 <script>
-import STRING from '../../strings'
-import { handleResponseError } from '../../helpers'
-
-const endpoint = 'units/'
+import crudMixin from '../../mixins/crud'
 
 export default {
   name: 'UnitList',
   data () {
     return {
-      collection: []
+      endpoint: 'units/'
     }
   },
 
-  methods: {
-    retrieve () {
-      this.axios.get(endpoint).then(res => {
-        this.collection = res.data
-      }).catch(error => handleResponseError(error))
-    },
-
-    destroy (id) {
-      if (confirm(STRING.DELETE_CONFIRMATION_MESSAGE)) {
-        this.axios.delete(endpoint + id).then(res => {
-          this.retrieve()
-        }).catch(error => handleResponseError(error))
-      }
-    }
-  },
+  mixins: [crudMixin],
 
   mounted () {
     this.retrieve()
