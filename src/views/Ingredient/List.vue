@@ -7,7 +7,7 @@
     <div class="list-grid-container">
       <div class="grid">
         <div class="col-4">
-          <card-new title="Add new recipe" @click="navigateToAdd" />
+          <card-new title="Add new ingredient" @click="navigateToAdd" />
         </div>
         <div v-for="item in collection" :key="item.id" class="col-4">
           <card :title="item.name" @delete="destroy(item.id)" @navigateTo="navigateTo(item.id)" />
