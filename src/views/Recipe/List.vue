@@ -4,23 +4,16 @@
       <strong>Recipes</strong> manager
     </h1>
     <fab icon="&plus;" @click="navigateToAdd" />
-    <table>
-      <thead>
-        <tr>
-          <td>Action</td>
-          <td>Name</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in collection" :key="item.id">
-          <td>
-            <button type="button" @click="destroy(item.id)">remove</button>
-            <router-link :to="'/recipe/edit/' + item.id">Edit</router-link>
-          </td>
-          <td>{{item.name}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="list-grid-container">
+      <div class="grid">
+        <div class="col-4">
+          <card-new title="Add new recipe" @click="navigateToAdd" />
+        </div>
+        <div v-for="item in collection" :key="item.id" class="col-4">
+          <card :title="item.name" @delete="destroy(item.id)" @navigateTo="navigateTo(item.id)" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

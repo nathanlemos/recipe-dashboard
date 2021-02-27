@@ -149,7 +149,7 @@ body, html {
     }
 }
 
-.shadow {
+.shadow, .shadow-hover:hover {
     box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
                 0 2px 4px rgba(0,0,0,0.07), 
                 0 4px 8px rgba(0,0,0,0.07), 
@@ -168,11 +168,11 @@ body, html {
 }
 
 .lg-only {
-    display: block;
+    display: block !important;
 }
 
 .sm-only {
-    display: none;
+    display: none !important;
 }
 
 @media (max-width: #{$mobile-breakpoint}) {
@@ -187,10 +187,10 @@ body, html {
     }
 
     .lg-only {
-        display: none;
+        display: none !important;
     }
     
     .sm-only {
-        display: block;
+        display: flex !important;
     }
 }

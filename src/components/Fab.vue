@@ -1,5 +1,5 @@
 <template>
-    <div class="fab shadow noselect" @click="click">
+    <div class="fab shadow noselect sm-only" @click="click">
         {{ icon }}
     </div>
 </template>

@@ -71,6 +71,9 @@
             </div>
           </div>
         </div>
+        <div class="col-12 lg-only">
+          <button class="btn" type="submit">{{ isEditing ? 'Update' : 'Create' }}</button>
+        </div>
       </div>
       <fab icon="&#x2713;" @click="submit" />
     </form>

@@ -52,7 +52,6 @@ export default {
     },
 
     handleSubmitResponse (response) {
-      console.log('path:', this.route)
       this.$router.push({ path: this.route })
     },
 
@@ -65,8 +64,11 @@ export default {
     },
 
     navigateToAdd () {
-      console.log('path:', [this.route, 'add'].join('/'))
       this.$router.push({ path: [this.route, 'add'].join('/') })
+    },
+
+    navigateTo (id) {
+      this.$router.push({ path: [this.route, 'edit', id].join('/') })
     }
   }
 }
