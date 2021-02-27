@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <h1>This is home</h1>
-
+  <div class="inner-container">
+    <h1 class="h1">
+      <strong>This is</strong> home
+    </h1>
     <ul>
       <li>
         <router-link to="/unit">Units</router-link>

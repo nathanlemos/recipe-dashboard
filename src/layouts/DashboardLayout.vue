@@ -1,7 +1,9 @@
 <template>
-    <div>
+    <div class="navbar">
+      <div class="navbar-container">
         <router-link to="/dashboard">Home</router-link>
-        <a href="javascript:;" @click.prevent="logoff">logoff</a>
+        <a href="javascript:;" @click.prevent="logoff">Logout</a>
+      </div>
     </div>
     <router-view />
 </template>

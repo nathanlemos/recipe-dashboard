@@ -6,6 +6,7 @@ export default {
       model: {},
       isEditing: false,
       listViewName: '',
+      route: '',
       collection: []
     }
   },
@@ -51,7 +52,8 @@ export default {
     },
 
     handleSubmitResponse (response) {
-      this.$router.push({ name: this.listViewName })
+      console.log('path:', this.route)
+      this.$router.push({ path: this.route })
     },
 
     handleDetailsResponse (response) {
@@ -60,6 +62,11 @@ export default {
 
     handleResponseError (error) {
       this.handleResponseErrorPayload(error.response)
+    },
+
+    navigateToAdd () {
+      console.log('path:', [this.route, 'add'].join('/'))
+      this.$router.push({ path: [this.route, 'add'].join('/') })
     }
   }
 }

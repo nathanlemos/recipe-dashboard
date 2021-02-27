@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h1>IngredientList</h1>
-    <router-link to="/ingredient/add">Add</router-link>
+  <div class="inner-container">
+    <h1 class="h1">
+      <strong>Ingredients</strong> manager
+    </h1>
+    <fab @click="navigateToAdd" />
     <table>
       <thead>
         <tr>
@@ -30,7 +32,8 @@ export default {
   name: 'IngredientList',
   data () {
     return {
-      endpoint: 'ingredients/'
+      endpoint: 'ingredients/',
+      route: '/ingredient'
     }
   },
 

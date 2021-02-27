@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h1>UnitList</h1>
-    <router-link to="/unit/add">Add</router-link>
+  <div class="inner-container">
+    <h1 class="h1">
+      <strong>Units</strong> manager
+    </h1>
+    <fab @click="navigateToAdd" />
     <table>
       <thead>
         <tr>
@@ -30,7 +32,8 @@ export default {
   name: 'UnitList',
   data () {
     return {
-      endpoint: 'units/'
+      endpoint: 'units/',
+      route: '/unit'
     }
   },
 

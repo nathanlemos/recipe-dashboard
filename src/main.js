@@ -4,8 +4,11 @@ import router from './router'
 import store from './store'
 import axios from './boot/axios'
 
-const app = createApp(App).use(store).use(router)
+import Fab from './components/Fab'
 
+const app = createApp(App).use(store).use(router)
 app.config.globalProperties.axios = axios
+
+app.component('Fab', Fab)
 
 app.mount('#app')

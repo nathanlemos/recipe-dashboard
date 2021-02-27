@@ -57,7 +57,7 @@ export default {
   data () {
     return {
       endpoint: 'recipes/',
-      listViewName: 'recipeList',
+      route: '/recipe',
       ingredientOptions: [],
       newIngredient: {
         ingredient: null,
@@ -79,7 +79,7 @@ export default {
       const request = !this.model.id ? this.axios.post(endpoint, this.model) : this.axios.put(endpoint + this.model.id, this.model)
 
       request.then(res => {
-        this.$router.push({ name: 'recipeList' })
+        this.$router.push({ path: this.route })
       }).catch(error => this.handleResponseError(error))
     },
 

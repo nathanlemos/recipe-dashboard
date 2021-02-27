@@ -39,7 +39,7 @@ export default {
   data () {
     return {
       endpoint: 'ingredients/',
-      listViewName: 'ingredientList',
+      route: '/ingredient',
       unitOptions: [],
       model: {
         id: null,

@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       endpoint: 'units/',
-      listViewName: 'unitList',
+      route: '/unit',
       model: {
         id: null,
         name: ''
