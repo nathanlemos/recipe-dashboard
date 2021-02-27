@@ -37,6 +37,20 @@ export default {
     }
   },
 
+  methods: {
+    canSubmit () {
+      if (!this.model.name || this.model.name.length < 2) {
+        return {
+          response: {
+            messages: ['Name: Ensure this field has at least 2 characters.']
+          }
+        }
+      }
+
+      return { allowed: true }
+    }
+  },
+
   mixins: [crudMixin, messageMixin],
 
   mounted () {

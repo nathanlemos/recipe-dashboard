@@ -35,6 +35,12 @@ export default {
     },
 
     submit () {
+      const canSubmitResponse = this.canSubmit()
+
+      if (!canSubmitResponse.allowed) {
+        return this.handleSubmitRequestError(canSubmitResponse)
+      }
+
       const request = !this.model.id ? this.axios.post(this.endpoint, this.model) : this.axios.put(this.endpoint + this.model.id, this.model)
 
       request.then(response =>
@@ -42,6 +48,10 @@ export default {
       ).catch(error =>
         this.handleResponseError(error)
       )
+    },
+
+    canSubmit () {
+      return { allowed: true }
     },
 
     beforeRetrieve () {
@@ -57,6 +67,10 @@ export default {
 
     handleDetailsResponse (response) {
       this.model = response.data
+    },
+
+    handleSubmitRequestError (error) {
+      this.handleResponseErrorPayload(error.response)
     },
 
     handleResponseError (error) {

@@ -1,7 +1,15 @@
 export default {
   methods: {
     handleResponseErrorPayload (error) {
-      console.log('MESSAGE MIXIN:', error.response)
+      let messages = ['An error occured']
+
+      if (error.response) {
+        messages = [error.response]
+      } else if (error.messages) {
+        messages = error.messages
+      }
+
+      console.log('MESSAGE MIXIN:', messages)
     }
   }
 }

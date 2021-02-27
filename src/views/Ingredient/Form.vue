@@ -20,7 +20,7 @@
         </div>
         <div class="col-4">
           <div class="form-group">
-              <label for="">Base quantity:</label>
+              <label for="">Referencial quantity:</label>
               <input type="text" placeholder="Base quantity" v-model="model.avg_quantity">
           </div>
         </div>
@@ -34,8 +34,8 @@
         </div>
         <div class="col-4">
           <div class="form-group">
-              <label for="">Price per base quantity:</label>
-              <input type="text" placeholder="Price per base quantity" v-model="model.cost">
+              <label for="">Price per referencial quantity:</label>
+              <input type="text" placeholder="Price per referencial quantity" v-model="model.cost">
           </div>
         </div>
         <div class="col-12 lg-only">
@@ -83,6 +83,33 @@ export default {
         self.unitOptions = unitOptions
         self.beforeRetrieve()
       }).catch(error => this.handleResponseError(error))
+    },
+
+    canSubmit () {
+      // eslint-disable-next-line prefer-const
+      let messages = []
+
+      if (!this.model.name || this.model.name.length < 3) {
+        messages.push('Name: Ensure this field has at least 3 characters.')
+      }
+
+      if (!this.model.article_number || this.model.article_number.length < 3) {
+        messages.push('Article Number: Ensure this field has at least 3 characters.')
+      }
+
+      if (!this.model.avg_quantity) {
+        messages.push('Base quantity: Ensure this value is greater than or equal to 1.')
+      }
+
+      if (!this.model.unit_id) {
+        messages.push('Unit: Inform the unit of the ingredient.')
+      }
+
+      if (!this.model.cost) {
+        messages.push('Price per referencial quantity: Ensure this value is greater than or equal to 0.01.')
+      }
+
+      return messages.length ? { response: { messages } } : { allowed: true }
     }
   },
 

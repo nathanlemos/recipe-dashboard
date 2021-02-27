@@ -110,6 +110,12 @@ export default {
     submit () {
       this.model.ingredients = this.ingredientsToPayload()
 
+      const canSubmitResponse = this.canSubmit()
+
+      if (!canSubmitResponse.allowed) {
+        return this.handleSubmitRequestError(canSubmitResponse)
+      }
+
       const request = !this.model.id ? this.axios.post(endpoint, this.model) : this.axios.put(endpoint + this.model.id, this.model)
 
       request.then(res => {
@@ -123,6 +129,14 @@ export default {
     },
 
     add () {
+      if (!this.newIngredient.ingredient || !this.newIngredient.quantity) {
+        return this.handleSubmitRequestError({
+          response: {
+            messages: ['Inform the ingredient and a valid quantity']
+          }
+        })
+      }
+
       const index = this.ingredients.length
 
       this.ingredients.push({
@@ -176,6 +190,25 @@ export default {
 
         self.beforeRetrieve()
       }).catch(error => this.handleResponseError(error))
+    },
+
+    canSubmit () {
+      // eslint-disable-next-line prefer-const
+      let messages = []
+
+      if (!this.model.name || this.model.name.length < 3) {
+        messages.push('Name: Ensure this field has at least 3 characters.')
+      }
+
+      if (!this.model.description || this.model.description.length < 3) {
+        messages.push('Description: Ensure this field has at least 3 characters.')
+      }
+
+      if (!this.model.ingredients || !this.model.ingredients.length) {
+        messages.push('Ingredients: Inform at least 1 ingredient.')
+      }
+
+      return messages.length ? { response: { messages } } : { allowed: true }
     }
   },
 
