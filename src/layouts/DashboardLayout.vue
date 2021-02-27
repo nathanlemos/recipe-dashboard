@@ -4,15 +4,19 @@
     </div>
     <router-view />
 </template>
+
 <script>
+import { mapActions } from 'vuex'
+import { setToken } from '../helpers'
 export default {
   name: 'DashboardLayout',
 
   methods: {
+    ...mapActions(['setUser']),
+
     logoff () {
-      this.$store.commit('setUser', null)
-      delete this.axios.defaults.headers.common.Authorization
-      localStorage.removeItem('credentials')
+      this.setUser(null)
+      setToken(this, null)
       this.$router.push({ name: 'signin' })
     }
   }

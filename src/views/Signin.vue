@@ -18,6 +18,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { setToken } from '../helpers'
+
 export default {
   name: 'Signin',
 
@@ -29,11 +32,12 @@ export default {
   },
 
   methods: {
+    ...mapActions(['setUser']),
+
     signin () {
       this.axios.post('auth/login', this.$data).then(res => {
-        this.$store.commit('setUser', res.data.user)
-        this.axios.defaults.headers.common.Authorization = 'bearer ' + res.data.token
-        localStorage.setItem('credentials', JSON.stringify(res.data))
+        this.setUser(res.data.user)
+        setToken(this, res.data.token)
         this.$router.push({ name: 'home' })
       }).catch(err => {
         console.log('error', err.response)

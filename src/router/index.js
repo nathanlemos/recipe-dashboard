@@ -13,7 +13,7 @@ const routes = [
       { path: '/signup', name: 'signup', component: () => import('../views/Signup.vue') }
     ],
     beforeEnter (to, from, next) {
-      next(!(store.state && store.state.user) ? null : { name: 'home' })
+      next(!store.getters.getUser ? null : { name: 'home' })
     }
   },
 
@@ -23,10 +23,13 @@ const routes = [
     name: 'Dashboard',
     component: () => import('../layouts/DashboardLayout'),
     children: [
-      { path: '', name: 'home', component: () => import('../views/Home.vue') }
+      { path: '', name: 'home', component: () => import('../views/Home.vue') },
+      { path: '/unit', name: 'unitList', component: () => import('../views/Unit/List.vue') },
+      { path: '/unit/add', name: 'unitFormNew', component: () => import('../views/Unit/Form.vue') },
+      { path: '/unit/edit/:id', name: 'unitFormEdit', component: () => import('../views/Unit/Form.vue') }
     ],
     beforeEnter (to, from, next) {
-      next((store.state && store.state.user) ? null : { name: 'signin' })
+      next(store.getters.getUser ? null : { name: 'signin' })
     }
   }
 ]

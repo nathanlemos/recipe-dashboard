@@ -2,15 +2,17 @@
   <router-view/>
 </template>
 <script>
+import { mapActions } from 'vuex'
+import { setToken, recoveryToken, recoveryUser } from './helpers'
+
 export default {
   name: 'app',
   methods: {
-    retrieveToken () {
-      const credentials = JSON.parse(localStorage.getItem('credentials'))
+    ...mapActions(['setUser']),
 
-      if (credentials) {
-        this.$store.commit('setUser', credentials.user)
-      }
+    retrieveToken () {
+      this.setUser(recoveryUser())
+      setToken(this, recoveryToken())
     }
   },
 
