@@ -17,3 +17,7 @@ export function recoveryToken () {
 export function recoveryUser () {
   return JSON.parse(localStorage.getItem(STRING.JWT_TOKEN))
 }
+
+export function handleResponseError (error) {
+  console.log('HELPER HANDLE:', error.response)
+}

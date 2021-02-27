@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>UnitList</h1>
-    <router-link to="/unit/add">Add</router-link>
+    <h1>IngredientList</h1>
+    <router-link to="/ingredient/add">Add</router-link>
     <table>
       <thead>
         <tr>
@@ -13,7 +13,7 @@
         <tr v-for="item in collection" :key="item.id">
           <td>
             <button type="button" @click="destroy(item.id)">remove</button>
-            <router-link :to="'/unit/edit/' + item.id">Edit</router-link>
+            <router-link :to="'/ingredient/edit/' + item.id">Edit</router-link>
           </td>
           <td>{{item.name}}</td>
         </tr>
@@ -26,10 +26,10 @@
 import STRING from '../../strings'
 import { handleResponseError } from '../../helpers'
 
-const endpoint = 'units/'
+const endpoint = 'ingredients/'
 
 export default {
-  name: 'UnitList',
+  name: 'IngredientList',
   data () {
     return {
       collection: []

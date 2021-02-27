@@ -13,6 +13,10 @@
 </template>
 
 <script>
+import { handleResponseError } from '../../helpers'
+
+const endpoint = 'units/'
+
 export default {
   name: 'UnitForm',
   data () {
@@ -24,27 +28,17 @@ export default {
   },
   methods: {
     submit () {
-      if (!this.id) {
-        this.axios.post('units/', this.$data).then(res => {
-          this.$router.push({ name: 'unitList' })
-        }).catch(err => {
-          console.log('error', err.response)
-        })
-      } else {
-        this.axios.put('units/' + this.id, this.$data).then(res => {
-          this.$router.push({ name: 'unitList' })
-        }).catch(err => {
-          console.log('error', err.response)
-        })
-      }
+      const request = !this.id ? this.axios.post(endpoint, this.$data) : this.axios.put(endpoint + this.id, this.$data)
+
+      request.then(res => {
+        this.$router.push({ name: 'unitList' })
+      }).catch(error => handleResponseError(error))
     },
     details (id) {
-      this.axios.get('units/' + id).then(res => {
+      this.axios.get(endpoint + id).then(res => {
         this.id = res.data.id
         this.name = res.data.name
-      }).catch(err => {
-        console.log('error', err.response)
-      })
+      }).catch(error => handleResponseError(error))
     }
   },
 

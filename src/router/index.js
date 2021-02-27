@@ -24,9 +24,16 @@ const routes = [
     component: () => import('../layouts/DashboardLayout'),
     children: [
       { path: '', name: 'home', component: () => import('../views/Home.vue') },
+
+      // Unit routes
       { path: '/unit', name: 'unitList', component: () => import('../views/Unit/List.vue') },
       { path: '/unit/add', name: 'unitFormNew', component: () => import('../views/Unit/Form.vue') },
-      { path: '/unit/edit/:id', name: 'unitFormEdit', component: () => import('../views/Unit/Form.vue') }
+      { path: '/unit/edit/:id', name: 'unitFormEdit', component: () => import('../views/Unit/Form.vue') },
+
+      // Ingredient routes
+      { path: '/ingredient', name: 'ingredientList', component: () => import('../views/Ingredient/List.vue') },
+      { path: '/ingredient/add', name: 'ingredientFormNew', component: () => import('../views/Ingredient/Form.vue') },
+      { path: '/ingredient/edit/:id', name: 'ingredientFormEdit', component: () => import('../views/Ingredient/Form.vue') }
     ],
     beforeEnter (to, from, next) {
       next(store.getters.getUser ? null : { name: 'signin' })

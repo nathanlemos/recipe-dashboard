@@ -19,7 +19,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { setToken } from '../helpers'
+import { setToken, handleResponseError } from '../helpers'
 
 export default {
   name: 'Signin',
@@ -39,9 +39,7 @@ export default {
         this.setUser(res.data.user)
         setToken(this, res.data.token)
         this.$router.push({ name: 'home' })
-      }).catch(err => {
-        console.log('error', err.response)
-      })
+      }).catch(error => handleResponseError(error))
     }
   }
 }

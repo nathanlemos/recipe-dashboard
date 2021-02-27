@@ -1,5 +1,6 @@
 <template>
     <div>
+        <router-link to="/dashboard">Home</router-link>
         <a href="javascript:;" @click.prevent="logoff">logoff</a>
     </div>
     <router-view />
