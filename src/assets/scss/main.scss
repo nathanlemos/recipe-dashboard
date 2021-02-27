@@ -1,11 +1,14 @@
 $primary: #c23616;
 $secondary: #e84118;
 
+$white: #ffffff;
+$gray0: #fafafa;
 $gray1: #dcdde1;
 $gray2: #718093;
 $gray3: #2c3e50;
 $gray4: #222222;
 
+$borderRadius: 4px;
 $mobile-breakpoint: 576px;
 
 * {
@@ -21,9 +24,48 @@ body, html {
     color: $gray4;
     font-weight: lighter;
     text-transform: uppercase;
+    margin-top: 0;
 
     strong {
         font-weight: bold;
+    }
+}
+
+.btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    background-color: $secondary;
+    border: 0;
+    color: white;
+    border-radius: $borderRadius;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary;
+    }
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    td {
+        padding: 5px;
+    }
+
+    thead {
+        background-color: $gray2;
+        td {
+            color: white;
+        }
+    }
+
+    tbody {
+        tr:nth-child(odd) {
+            background-color: $gray1;
+        }
     }
 }
 
@@ -33,16 +75,16 @@ body, html {
 
     .navbar-container {
         a {
-            background: $primary;
+            background: $secondary;
             color: white;
             height: 100%;
             display: inline-block;
             padding: 15px;
-            border-right: solid 1px $secondary;
+            border-right: solid 1px $primary;
             text-decoration: none;
 
             &:hover {
-                background-color: $secondary;
+                background-color: $primary;
             }
         }
     }
@@ -52,6 +94,7 @@ body, html {
     max-width: 1024px;
     margin: 0 auto;
     padding: 15px;
+    margin-top: 30px;
 }
 
 .grid {
@@ -86,7 +129,7 @@ body, html {
         border: solid 1px $gray2;
         font-size: 16px;
         padding: 5px;
-        border-radius: 4px;
+        border-radius: $borderRadius;
 
         &:focus {
             outline: none !important;
@@ -122,7 +165,15 @@ body, html {
          -moz-user-select: none;
           -ms-user-select: none;
               user-select: none;
-  }
+}
+
+.lg-only {
+    display: block;
+}
+
+.sm-only {
+    display: none;
+}
 
 @media (max-width: #{$mobile-breakpoint}) {
     .grid {
@@ -133,5 +184,13 @@ body, html {
                 grid-column: 1;
             }
         }
+    }
+
+    .lg-only {
+        display: none;
+    }
+    
+    .sm-only {
+        display: block;
     }
 }
