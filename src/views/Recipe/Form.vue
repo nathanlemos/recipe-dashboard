@@ -119,7 +119,7 @@ export default {
       return payload.map((e, i) => {
         return {
           index: i,
-          id: e.id,
+          id: e.ingredient_id,
           name: e.name,
           quantity: e.quantity
 
