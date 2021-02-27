@@ -3,7 +3,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex'
-import { setToken, recoveryToken, recoveryUser } from './helpers'
+import jwtMixin from './mixins/jwt'
 
 export default {
   name: 'app',
@@ -11,10 +11,12 @@ export default {
     ...mapActions(['setUser']),
 
     retrieveToken () {
-      this.setUser(recoveryUser())
-      setToken(this, recoveryToken())
+      this.setUser(this.recoveryUser())
+      this.setToken(this.recoveryToken())
     }
   },
+
+  mixins: [jwtMixin],
 
   mounted () {
     this.retrieveToken()

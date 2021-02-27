@@ -19,7 +19,8 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { setToken, handleResponseError } from '../helpers'
+import { handleResponseError } from '../helpers'
+import jwtMixin from '../mixins/jwt'
 
 export default {
   name: 'Signin',
@@ -37,10 +38,12 @@ export default {
     signin () {
       this.axios.post('auth/login', this.$data).then(res => {
         this.setUser(res.data.user)
-        setToken(this, res.data.token)
+        this.setToken(res.data.token)
         this.$router.push({ name: 'home' })
       }).catch(error => handleResponseError(error))
     }
-  }
+  },
+
+  mixins: [jwtMixin]
 }
 </script>

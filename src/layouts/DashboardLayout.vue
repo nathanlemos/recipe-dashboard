@@ -8,7 +8,8 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { setToken } from '../helpers'
+import jwtMixin from '../mixins/jwt'
+
 export default {
   name: 'DashboardLayout',
 
@@ -17,9 +18,11 @@ export default {
 
     logoff () {
       this.setUser(null)
-      setToken(this, null)
+      this.setToken(null)
       this.$router.push({ name: 'signin' })
     }
-  }
+  },
+
+  mixins: [jwtMixin]
 }
 </script>
