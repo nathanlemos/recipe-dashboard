@@ -33,7 +33,12 @@ const routes = [
       // Ingredient routes
       { path: '/ingredient', name: 'ingredientList', component: () => import('../views/Ingredient/List.vue') },
       { path: '/ingredient/add', name: 'ingredientFormNew', component: () => import('../views/Ingredient/Form.vue') },
-      { path: '/ingredient/edit/:id', name: 'ingredientFormEdit', component: () => import('../views/Ingredient/Form.vue') }
+      { path: '/ingredient/edit/:id', name: 'ingredientFormEdit', component: () => import('../views/Ingredient/Form.vue') },
+
+      // Ingredient routes
+      { path: '/recipe', name: 'recipeList', component: () => import('../views/Recipe/List.vue') },
+      { path: '/recipe/add', name: 'recipeFormNew', component: () => import('../views/Recipe/Form.vue') },
+      { path: '/recipe/edit/:id', name: 'recipeFormEdit', component: () => import('../views/Recipe/Form.vue') }
     ],
     beforeEnter (to, from, next) {
       next(store.getters.getUser ? null : { name: 'signin' })

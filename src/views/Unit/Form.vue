@@ -3,7 +3,7 @@
     <form action="javascript:;" @submit.prevent="submit()">
         <div>
             <label for="">Name:</label>
-            <input type="text" placeholder="Name" v-model="name">
+            <input type="text" placeholder="Name" v-model="model.name">
         </div>
         <div>
             <button type="submit">{{ isEditing ? 'Save' : 'Create' }}</button>
@@ -22,13 +22,15 @@ export default {
   data () {
     return {
       isEditing: false,
-      id: null,
-      name: ''
+      model: {
+        id: null,
+        name: ''
+      }
     }
   },
   methods: {
     submit () {
-      const request = !this.id ? this.axios.post(endpoint, this.$data) : this.axios.put(endpoint + this.id, this.$data)
+      const request = !this.model.id ? this.axios.post(endpoint, this.model) : this.axios.put(endpoint + this.model.id, this.model)
 
       request.then(res => {
         this.$router.push({ name: 'unitList' })
@@ -36,8 +38,7 @@ export default {
     },
     details (id) {
       this.axios.get(endpoint + id).then(res => {
-        this.id = res.data.id
-        this.name = res.data.name
+        this.model = res.data
       }).catch(error => handleResponseError(error))
     }
   },
