@@ -9,11 +9,6 @@ export default {
 
       let currentToasts = document.getElementsByClassName('toast')
 
-      if (currentToasts && currentToasts.length) {
-        let lastToast = currentToasts[currentToasts.length - 1]
-        initialTop = 15 + lastToast.offsetTop + lastToast.offsetHeight
-      }
-
       if (type === 'error') {
         title = 'Error!'
         bgColor = '#e74c3c'
@@ -25,6 +20,7 @@ export default {
       el.classList.add('shadow')
       el.style.backgroundColor = bgColor
       el.style.top = initialTop.toString() + 'px'
+      el.style.opacity = 0
 
       let titleEl = document.createElement('h2')
       titleEl.innerText = title
@@ -42,8 +38,24 @@ export default {
 
       document.body.appendChild(el)
 
+      if (currentToasts && currentToasts.length) {
+        let nextTop = 15 + el.offsetHeight
+
+        currentToasts.forEach(toast => {
+          if (toast.id !== id) {
+            const top = toast.offsetTop + nextTop
+            toast.style.top = top.toString() + 'px'
+          }
+        })
+      }
+
+      el.style.opacity = 1
+
       setTimeout(function () {
-        document.getElementById(id).remove()
+        el.style.opacity = 0
+        setTimeout(function () {
+          el.remove()
+        }, 500)
       }, 5000)
     },
 

@@ -44,7 +44,7 @@ export default {
   width: 100%;
   top: 0;
   display: none;
-  transition: all 0.5 ease-in-out;
+  transition: all 0.5s ease-in-out;
 
   &.active {
     display: flex;
