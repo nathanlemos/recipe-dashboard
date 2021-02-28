@@ -6,7 +6,7 @@ import axios from './boot/axios'
 
 import Fab from './components/Fab'
 import Card from './components/Card'
-import CardNew from './components/CardNew'
+import AddButton from './components/AddButton'
 import SearchBox from './components/SearchBox'
 
 const app = createApp(App).use(store).use(router)
@@ -14,7 +14,7 @@ app.config.globalProperties.axios = axios
 
 app.component('Fab', Fab)
 app.component('Card', Card)
-app.component('CardNew', CardNew)
+app.component('AddButton', AddButton)
 app.component('SearchBox', SearchBox)
 
 app.mount('#app')

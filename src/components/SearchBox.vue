@@ -1,5 +1,6 @@
 <template>
     <div class="search-box">
+        <i class="icon-magnifier"></i>
         <input v-model="search" :placeholder="placeholder || 'Search by name'" type="text" @keyup="keyup" @keydown="keydown">
     </div>
 </template>
@@ -32,12 +33,19 @@ export default {
 
 <style lang="scss" scoped>
     .search-box {
-      background-color: $gray1;
-      padding: 5px;
-      border-radius: 4px;
+      border: solid 1px $gray1;
+      background-color: $gray0;
+      padding: 8px 5px;
+      border-radius: $borderRadius;
+      display: flex;
+
+      i {
+        margin-left: 5px;
+        margin-right: 15px;
+      }
 
       input {
-        font-size: 24px;
+        font-size: 16px;
         width: 100%;
         border: none;
         background-color: transparent;

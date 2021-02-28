@@ -10,7 +10,7 @@
     <div class="list-grid-container">
       <div class="grid">
         <div class="col-4">
-          <card-new title="Add new ingredient" @click="navigateToAdd" />
+          <add-button title="Add new ingredient" @click="navigateToAdd" />
         </div>
         <div v-for="item in filteredCollection" :key="item.id" class="col-4">
           <card
