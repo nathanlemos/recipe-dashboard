@@ -86,7 +86,7 @@
                       </td>
                       </tr>
                       <tr v-if="!ingredients || !ingredients.length">
-                        <td colspan="3">
+                        <td colspan="5">
                           No items found
                         </td>
                       </tr>
@@ -178,7 +178,7 @@ export default {
     },
 
     add () {
-      if (!this.newIngredient.ingredient || !this.newIngredient.quantity) {
+      if (!this.newIngredient.ingredient || !this.newIngredient.quantity || isNaN(this.newIngredient.quantity)) {
         return this.handleSubmitRequestError({
           response: {
             messages: ['Inform the ingredient and a valid quantity']

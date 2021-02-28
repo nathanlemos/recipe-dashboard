@@ -97,15 +97,15 @@ export default {
         messages.push('Article Number: Ensure this field has at least 3 characters.')
       }
 
-      if (!this.model.avg_quantity) {
+      if (!this.model.avg_quantity || isNaN(this.model.avg_quantity)) {
         messages.push('Base quantity: Ensure this value is greater than or equal to 1.')
       }
 
-      if (!this.model.unit_id) {
+      if (!this.model.unit_id || isNaN(this.model.unit_id)) {
         messages.push('Unit: Inform the unit of the ingredient.')
       }
 
-      if (!this.model.cost) {
+      if (!this.model.cost || isNaN(this.model.cost)) {
         messages.push('Price per referencial quantity: Ensure this value is greater than or equal to 0.01.')
       }
 
