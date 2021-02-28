@@ -67,6 +67,8 @@ export default {
           }
         } else if (error.messages) {
           messages = error.messages
+        } else if (typeof error === 'string') {
+          messages = [error]
         }
       }
 

@@ -21,7 +21,7 @@ instance.interceptors.response.use((response) => {
   return response
 }, (error) => {
   store._actions.setLoaderState[0](false)
-  return Promise.reject(error.message)
+  return Promise.reject(error)
 })
 
 export default instance

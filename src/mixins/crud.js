@@ -75,7 +75,7 @@ export default {
     },
 
     handleResponseError (error) {
-      this.handleResponseErrorPayload(error.response)
+      this.handleResponseErrorPayload(error)
     },
 
     navigateToAdd () {
