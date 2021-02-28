@@ -5,7 +5,7 @@
     </h1>
     <form action="javascript:;" @submit.prevent="submit()">
       <div class="grid">
-        <div class="col-7">
+        <div class="col-4">
           <div class="grid">
             <div class="col-12">
               <div class="form-group">
@@ -19,9 +19,17 @@
                   <textarea v-model="model.description" cols="30" rows="4"></textarea>
               </div>
             </div>
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="">Total cost:</label>
+                  <div class="total-cost">
+                    ${{ totalCost }}
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-5">
+        <div class="col-8">
           <div class="ingredients-box">
             <div class="grid">
               <div class="col-10">
@@ -48,7 +56,9 @@
                       <tr>
                       <td>Action</td>
                       <td>Ingredient</td>
+                      <td>Cost</td>
                       <td>Quantity</td>
+                      <td>Total cost</td>
                       </tr>
                   </thead>
                   <tbody>
@@ -56,8 +66,24 @@
                       <td>
                           <button type="button" @click="remove(item.index)">remove</button>
                       </td>
-                      <td>{{item.name}}</td>
-                      <td>{{item.quantity}}</td>
+                      <td>
+                        {{item.name}}
+                      </td>
+                      <td>
+                        <div v-if="item.details && item.details.unit">
+                          ${{formatCost(item.details.cost)}} / ({{item.details.avg_quantity}} {{item.details.unit.name}})
+                        </div>
+                      </td>
+                      <td>
+                        <div v-if="item.details && item.details.unit">
+                          {{item.quantity}} {{item.details.unit.name}}
+                        </div>
+                      </td>
+                      <td>
+                        <div v-if="item.details && item.details.unit && item.quantity">
+                          ${{formatCost(calculateCost(item))}}
+                        </div>
+                      </td>
                       </tr>
                       <tr v-if="!ingredients || !ingredients.length">
                         <td colspan="3">
@@ -106,7 +132,29 @@ export default {
       }
     }
   },
+  computed: {
+    totalCost () {
+      let sum = 0
+
+      this.ingredients.forEach(item => {
+        sum += this.calculateCost(item)
+      })
+
+      return this.formatCost(sum)
+    }
+  },
   methods: {
+    calculateCost (item) {
+      if (item.quantity && item.details) {
+        return (item.details.cost / item.details.avg_quantity) * item.quantity
+      }
+
+      return 0
+    },
+    formatCost (value) {
+      const val = (value / 1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+    },
     submit () {
       this.model.ingredients = this.ingredientsToPayload()
 
@@ -144,7 +192,8 @@ export default {
         index: index,
         id: this.newIngredient.ingredient.value,
         name: this.newIngredient.ingredient.label,
-        quantity: this.newIngredient.quantity
+        quantity: this.newIngredient.quantity,
+        details: this.newIngredient.ingredient.details
       })
 
       this.newIngredient.ingredient = null
@@ -170,8 +219,8 @@ export default {
           index: i,
           id: e.ingredient_id,
           name: e.name,
-          quantity: e.quantity
-
+          quantity: e.quantity,
+          details: e
         }
       })
     },
@@ -183,7 +232,8 @@ export default {
         const ingredientOptions = res.data.map(e => {
           return {
             value: e.id,
-            label: e.name
+            label: e.name,
+            details: e
           }
         })
 
@@ -225,5 +275,10 @@ export default {
     border: solid 1px $gray2;
     padding: 15px;
     border-radius: 4px;
+  }
+
+  .total-cost {
+    font-size: 28px;
+    font-weight: bold;
   }
 </style>
