@@ -13,7 +13,6 @@ export default createStore({
     },
 
     applySetLoaderState (state, payload) {
-      console.log('chmaou mutation', payload)
       state.loaderState = payload
     }
   },
