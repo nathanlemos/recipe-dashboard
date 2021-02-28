@@ -1,7 +1,8 @@
 <template>
     <div class="card shadow-hover noselect" @click.prevent="click">
         <div class="card-content">
-            {{ title }}
+            <span class="title">{{ title }}</span>
+            <span class="subtitle">{{ subtitle || ' ' }}</span>
         </div>
         <div class="card-actions">
             <div class="card-action" @click="$emit('navigateTo')">
@@ -34,10 +35,23 @@ export default {
     z-index: 2;
 
     .card-content {
-        font-weight: bold;
-        font-size: 16px;
-        text-transform: uppercase;
         padding: 15px;
+
+        span {
+            display: block;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: $primary;
+        }
     }
 
     .card-actions {

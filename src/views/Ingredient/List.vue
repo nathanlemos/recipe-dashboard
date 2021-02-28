@@ -5,7 +5,7 @@
     </h1>
     <fab icon="&plus;" @click="navigateToAdd" />
     <div class="mb-1">
-      <search-box @search="setSearchText" />
+      <search-box placeholder="Search by name or article number" @search="setSearchText" />
     </div>
     <div class="list-grid-container">
       <div class="grid">
@@ -13,7 +13,7 @@
           <card-new title="Add new ingredient" @click="navigateToAdd" />
         </div>
         <div v-for="item in filteredCollection" :key="item.id" class="col-4">
-          <card :title="item.name" @delete="destroy(item.id)" @navigateTo="navigateTo(item.id)" />
+          <card :title="item.name" :subtitle="item.article_number" @delete="destroy(item.id)" @navigateTo="navigateTo(item.id)" />
         </div>
       </div>
     </div>

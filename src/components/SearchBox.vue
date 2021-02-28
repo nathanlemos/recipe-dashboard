@@ -1,11 +1,12 @@
 <template>
     <div class="search-box">
-        <input v-model="search" type="text" @keyup="keyup" @keydown="keydown">
+        <input v-model="search" :placeholder="placeholder || 'Search by name'" type="text" @keyup="keyup" @keydown="keydown">
     </div>
 </template>
 
 <script>
 export default {
+  props: ['placeholder'],
   data () {
     return {
       search: '',
