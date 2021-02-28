@@ -21,6 +21,7 @@ export default {
     destroy (id) {
       if (confirm(STRING.DELETE_CONFIRMATION_MESSAGE)) {
         this.axios.delete(this.endpoint + id).then(res => {
+          this.showMessage('success', ['Done!'])
           this.retrieve()
         }).catch(error => this.handleResponseError(error))
       }
