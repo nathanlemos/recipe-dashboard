@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import messageMixin from '../mixins/message'
+
 export default {
   name: 'Signup',
 
@@ -66,10 +68,10 @@ export default {
     signup () {
       this.axios.post('auth/register', this.$data).then(res => {
         this.$router.push({ name: 'signin' })
-      }).catch(err => {
-        console.log('error', err.response)
-      })
+      }).catch(error => this.handleResponseErrorPayload(error))
     }
-  }
+  },
+
+  mixins: [messageMixin]
 }
 </script>
