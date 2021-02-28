@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap');
+
 $primary: #c23616;
 $secondary: #e84118;
 
 $white: #ffffff;
+$black: #202020;
+
 $gray0: #fafafa;
 $gray1: #dcdde1;
 $gray2: #718093;
 $gray3: #2c3e50;
 $gray4: #222222;
 
-$borderRadius: 4px;
+$borderRadius: 8px;
 $mobile-breakpoint: 576px;
 
 * {
@@ -106,7 +110,7 @@ body, html {
     right: 15px;
     width: 300px;
     border-radius: 8px;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
@@ -205,6 +209,21 @@ body, html {
 
 .sm-only {
     display: none !important;
+}
+
+.bg-recipe {
+    background-image: url('~@/assets/img/bg-recipe.jpg');
+    background-size: cover;
+}
+
+.bg-unit {
+    background-image: url('~@/assets/img/bg-unit.jpg');
+    background-size: cover;
+}
+
+.bg-ingredient {
+    background-image: url('~@/assets/img/bg-ingredient.jpg');
+    background-size: cover;
 }
 
 @media (max-width: #{$mobile-breakpoint}) {

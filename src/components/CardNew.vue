@@ -1,8 +1,8 @@
 <template>
-    <div class="card shadow no-select" @click.prevent="click">
+    <div class="card no-select" @click.prevent="click">
         <div class="card-content">
             <div class="card-icon">
-                +
+                <i class="icon-plus"></i>
             </div>
             <div class="card-text">
                 {{ title }}
@@ -27,26 +27,40 @@ export default {
 <style lang="scss" scoped>
 .card {
     border: solid 1px $gray1;
-    border-bottom: 0;
     border-radius: $borderRadius;
     z-index: 2;
-    background-color: $primary;
+    border: solid 1px $gray2;
     cursor: pointer;
 
     .card-content {
         font-size: 16px;
-        padding: 15px;
+        padding: 36px 15px;
         text-align: center;
-        color: $white;
 
         .card-icon {
-            font-size: 24px;
-            font-weight: bold;
-            color: $white;
+            i {
+                font-size: 32px;
+                color: $gray2;
+            }
+            margin-bottom: 15px;
         }
 
         .card-text {
-            color: $white;
+            color: $gray2;
+        }
+    }
+
+    &:hover {
+        border: solid 1px $primary;
+
+        .card-icon {
+            i {
+                color: $primary;
+            }
+        }
+
+        .card-text {
+            color: $primary;
         }
     }
 }

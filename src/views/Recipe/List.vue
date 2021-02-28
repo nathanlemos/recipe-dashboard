@@ -14,6 +14,8 @@
         </div>
         <div v-for="item in filteredCollection" :key="item.id" class="col-4">
           <card
+            type="Recipe"
+            bgClass="bg-recipe"
             :showDetails="true"
             :title="item.name"
             @delete="destroy(item.id)"

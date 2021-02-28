@@ -13,7 +13,14 @@
           <card-new title="Add new ingredient" @click="navigateToAdd" />
         </div>
         <div v-for="item in filteredCollection" :key="item.id" class="col-4">
-          <card :title="item.name" :subtitle="item.article_number" @delete="destroy(item.id)" @navigateTo="navigateTo(item.id)" />
+          <card
+            type="Ingredient"
+            bgClass="bg-ingredient"
+            :title="item.name"
+            :subtitle="item.article_number"
+            @delete="destroy(item.id)"
+            @navigateTo="navigateTo(item.id)"
+          />
         </div>
       </div>
     </div>

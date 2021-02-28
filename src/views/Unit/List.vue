@@ -13,7 +13,13 @@
           <card-new title="Add new unit" @click="navigateToAdd" />
         </div>
         <div v-for="item in filteredCollection" :key="item.id" class="col-4">
-          <card :title="item.name" @delete="destroy(item.id)" @navigateTo="navigateTo(item.id)" />
+          <card
+            type="Unit"
+            bgClass="bg-unit"
+            :title="item.name"
+            @delete="destroy(item.id)"
+            @navigateTo="navigateTo(item.id)"
+          />
         </div>
       </div>
     </div>

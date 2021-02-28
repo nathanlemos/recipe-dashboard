@@ -1,18 +1,21 @@
 <template>
-    <div class="card shadow-hover no-select" @click.prevent="click">
-        <div class="card-content">
-            <span class="title">{{ title }}</span>
-            <span class="subtitle">{{ subtitle || ' ' }}</span>
-        </div>
-        <div class="card-actions">
-            <div v-if="showDetails" class="card-action" @click="$emit('navigateToDetails')">
-                Details
+    <div class="card shadow-hover no-select" @click.prevent="click" :class="bgClass">
+        <div class="card-inner">
+            <div class="card-actions">
+                <div v-if="showDetails" class="card-action" @click="$emit('navigateToDetails')">
+                    <i class="icon-list"></i>
+                </div>
+                <div class="card-action" @click="$emit('navigateTo')">
+                    <i class="icon-note"></i>
+                </div>
+                <div class="card-action" @click="$emit('delete')">
+                    <i class="icon-trash"></i>
+                </div>
             </div>
-            <div class="card-action" @click="$emit('navigateTo')">
-                Edit
-            </div>
-            <div class="card-action" @click="$emit('delete')">
-                Delete
+            <div class="card-content">
+                <div class="type">{{ type || '' }}</div>
+                <span class="title">{{ title }}</span>
+                <span class="subtitle">{{ subtitle || ' ' }}</span>
             </div>
         </div>
     </div>
@@ -25,6 +28,12 @@ export default {
       type: String
     },
     subtitle: {
+      type: String
+    },
+    type: {
+      type: String
+    },
+    bgClass: {
       type: String
     },
     showDetails: {
@@ -40,47 +49,62 @@ export default {
     border-radius: $borderRadius;
     z-index: 2;
 
-    .card-content {
-        padding: 15px;
+    .card-inner {
+        background-color: rgba(255, 255, 255, 0.5);
 
-        span {
-            display: block;
-        }
+        .card-content {
+            padding: 15px;
+            background-image: linear-gradient(to top, white , transparent);
+            border-radius: $borderRadius;
 
-        .title {
-            font-weight: bold;
-            font-size: 16px;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .subtitle {
-            font-size: 12px;
-            color: $primary;
-        }
-    }
-
-    .card-actions {
-        border-top: solid 1px $gray1;
-        display: flex;
-        flex-direction: row;
-
-        .card-action {
-            text-transform: uppercase;
-            flex: 1;
-            text-align: center;
-            padding: 5px;
-            color: $gray2;
-            font-weight: bold;
-
-            &:first-child {
-                border-radius: solid 1px $gray1;
+            span {
+                display: block;
             }
 
-            &:hover{
-                cursor: pointer;
-                color: white;
-                background-color: $primary;
+            .type {
+                color: $primary;
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 3px;
+            }
+
+            .title {
+                font-weight: bold;
+                font-size: 24px;
+                text-transform: uppercase;
+                margin-bottom: 25px;
+                color: $black;
+            }
+
+            .subtitle {
+                font-size: 12px;
+                color: $primary;
+            }
+        }
+
+        .card-actions {
+            display: flex;
+            flex-direction: row;
+            top: 1;
+
+            .card-action {
+                color: $gray2;
+                height: 40px;
+                width: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+
+                i {
+                    color: $gray4;
+                    cursor: pointer;
+
+                    &:hover{
+                        color: $primary;
+                    }
+                }
+
             }
         }
     }
