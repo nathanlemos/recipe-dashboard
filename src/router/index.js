@@ -38,6 +38,7 @@ const routes = [
       // Ingredient routes
       { path: '/recipe', name: 'recipeList', alias: '', component: () => import('../views/Recipe/List.vue') },
       { path: '/recipe/add', name: 'recipeFormNew', component: () => import('../views/Recipe/Form.vue') },
+      { path: '/recipe/details/:id', name: 'recipeDetails', component: () => import('../views/Recipe/Details.vue') },
       { path: '/recipe/edit/:id', name: 'recipeFormEdit', component: () => import('../views/Recipe/Form.vue') }
     ],
     beforeEnter (to, from, next) {

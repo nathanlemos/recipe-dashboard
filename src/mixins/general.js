@@ -22,6 +22,18 @@ export default {
       const s = this.searchText.toLowerCase()
 
       return s.length > 1 ? n.includes(s) : true
+    },
+
+    calculateCost (item) {
+      if (item.quantity && item.details) {
+        return (item.details.cost / item.details.avg_quantity) * item.quantity
+      }
+
+      return 0
+    },
+    formatCost (value) {
+      const val = (value / 1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
     }
   }
 }

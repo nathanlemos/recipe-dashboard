@@ -23,7 +23,7 @@
               <div class="form-group">
                   <label for="">Total cost:</label>
                   <div class="total-cost">
-                    ${{ totalCost }}
+                    €{{ totalCost }}
                   </div>
               </div>
             </div>
@@ -71,7 +71,7 @@
                       </td>
                       <td>
                         <div v-if="item.details && item.details.unit">
-                          ${{formatCost(item.details.cost)}} / ({{item.details.avg_quantity}} {{item.details.unit.name}})
+                          €{{formatCost(item.details.cost)}} / ({{item.details.avg_quantity}} {{item.details.unit.name}})
                         </div>
                       </td>
                       <td>
@@ -81,7 +81,7 @@
                       </td>
                       <td>
                         <div v-if="item.details && item.details.unit && item.quantity">
-                          ${{formatCost(calculateCost(item))}}
+                          €{{formatCost(calculateCost(item))}}
                         </div>
                       </td>
                       </tr>
@@ -109,6 +109,7 @@
 <script>
 import crudMixin from '../../mixins/crud'
 import messageMixin from '../../mixins/message'
+import generalMixin from '../../mixins/general'
 
 const endpoint = 'recipes/'
 
@@ -144,17 +145,6 @@ export default {
     }
   },
   methods: {
-    calculateCost (item) {
-      if (item.quantity && item.details) {
-        return (item.details.cost / item.details.avg_quantity) * item.quantity
-      }
-
-      return 0
-    },
-    formatCost (value) {
-      const val = (value / 1).toFixed(2).replace('.', ',')
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-    },
     submit () {
       this.model.ingredients = this.ingredientsToPayload()
 
@@ -263,7 +253,7 @@ export default {
     }
   },
 
-  mixins: [crudMixin, messageMixin],
+  mixins: [crudMixin, messageMixin, generalMixin],
 
   mounted () {
     this.fetchIngredients()

@@ -84,6 +84,10 @@ export default {
 
     navigateTo (id) {
       this.$router.push({ path: [this.route, 'edit', id].join('/') })
+    },
+
+    navigateToDetails (id) {
+      this.$router.push({ path: [this.route, 'details', id].join('/') })
     }
   }
 }

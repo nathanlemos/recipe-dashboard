@@ -5,6 +5,9 @@
             <span class="subtitle">{{ subtitle || ' ' }}</span>
         </div>
         <div class="card-actions">
+            <div v-if="showDetails" class="card-action" @click="$emit('navigateToDetails')">
+                Details
+            </div>
             <div class="card-action" @click="$emit('navigateTo')">
                 Edit
             </div>
@@ -23,6 +26,9 @@ export default {
     },
     subtitle: {
       type: String
+    },
+    showDetails: {
+      type: Boolean
     }
   }
 }
