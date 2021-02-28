@@ -1,5 +1,5 @@
 <template>
-    <div class="card shadow noselect" @click.prevent="click">
+    <div class="card shadow no-select" @click.prevent="click">
         <div class="card-content">
             <div class="card-icon">
                 +

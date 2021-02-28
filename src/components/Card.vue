@@ -1,5 +1,5 @@
 <template>
-    <div class="card shadow-hover noselect" @click.prevent="click">
+    <div class="card shadow-hover no-select" @click.prevent="click">
         <div class="card-content">
             <span class="title">{{ title }}</span>
             <span class="subtitle">{{ subtitle || ' ' }}</span>
