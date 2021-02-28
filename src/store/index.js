@@ -3,12 +3,18 @@ import STRING from '../strings'
 
 export default createStore({
   state: {
-    user: null
+    user: null,
+    loaderState: false
   },
+
   mutations: {
-    // Used to manage user data
     applySetUser (state, payload) {
       state.user = payload
+    },
+
+    applySetLoaderState (state, payload) {
+      console.log('chmaou mutation', payload)
+      state.loaderState = payload
     }
   },
 
@@ -21,12 +27,20 @@ export default createStore({
       }
 
       commit('applySetUser', payload)
+    },
+
+    setLoaderState ({ commit }, payload) {
+      commit('applySetLoaderState', payload)
     }
   },
 
   getters: {
     getUser: state => {
       return state.user
+    },
+
+    getLoaderState: state => {
+      return state.loaderState
     }
   }
 })

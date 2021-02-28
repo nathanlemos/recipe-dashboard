@@ -49,22 +49,25 @@ export default {
 
     handleResponseErrorPayload (error) {
       let messages = ['An error occured']
-      if (error.response) {
-        if (typeof error.response === 'object' && error.response.data) {
-          if (error.response.data.errors) {
-            messages = [error.response.data.errors]
-          } else {
-            messages = []
 
-            Object.keys(error.response.data).forEach(key => {
-              messages.push(key + ' ' + error.response.data[key][0])
-            })
+      if (error) {
+        if (error.response) {
+          if (typeof error.response === 'object' && error.response.data) {
+            if (error.response.data.errors) {
+              messages = [error.response.data.errors]
+            } else {
+              messages = []
+
+              Object.keys(error.response.data).forEach(key => {
+                messages.push(key + ' ' + error.response.data[key][0])
+              })
+            }
+          } else if (typeof error.response === 'string') {
+            messages = [error.response]
           }
-        } else if (typeof error.response === 'string') {
-          messages = [error.response]
+        } else if (error.messages) {
+          messages = error.messages
         }
-      } else if (error.messages) {
-        messages = error.messages
       }
 
       this.showMessage('error', messages)

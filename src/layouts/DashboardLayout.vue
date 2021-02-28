@@ -7,7 +7,7 @@
           </div>
           <div :class="isShowingMobileMenu ? 'lg-only main-menu' : 'main-menu'">
             <span class="badge no-select">
-              Welcome, {{getUser.username}}
+              Welcome{{user ? ', '+user.username : ''}}
             </span>
             <router-link class="no-select" to="/recipe">Recipe</router-link>
             <router-link class="no-select" to="/unit">Units</router-link>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import jwtMixin from '../mixins/jwt'
 
 export default {
@@ -36,7 +36,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['getUser'])
+    ...mapState(['user'])
   },
 
   methods: {
