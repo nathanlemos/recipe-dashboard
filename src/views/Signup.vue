@@ -66,6 +66,10 @@ export default {
 
   methods: {
     signup () {
+      if (this.password !== this.confirm_password) {
+        return this.showMessage('error', ['Password and confirmation must be equals'])
+      }
+
       this.axios.post('auth/register', this.$data).then(res => {
         this.$router.push({ name: 'signin' })
       }).catch(error => this.handleResponseErrorPayload(error))

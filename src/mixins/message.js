@@ -27,11 +27,13 @@ export default {
 
       let detailsEl = document.createElement('ul')
 
-      messages.forEach(message => {
-        let messageEl = document.createElement('li')
-        messageEl.innerText = message
-        detailsEl.appendChild(messageEl)
-      })
+      if (messages && messages.length) {
+        messages.forEach(message => {
+          let messageEl = document.createElement('li')
+          messageEl.innerText = message
+          detailsEl.appendChild(messageEl)
+        })
+      }
 
       el.appendChild(titleEl)
       el.appendChild(detailsEl)
@@ -67,12 +69,15 @@ export default {
           if (typeof error.response === 'object' && error.response.data) {
             if (error.response.data.errors) {
               messages = [error.response.data.errors]
+            } else if (error.response.data.message) {
+              messages = [error.response.data.message]
             } else {
-              messages = []
-
-              Object.keys(error.response.data).forEach(key => {
-                messages.push(key + ' ' + error.response.data[key][0])
-              })
+              if (typeof error.response.data === 'object') {
+                messages = []
+                Object.keys(error.response.data).forEach(key => {
+                  messages.push(key + ' ' + error.response.data[key][0])
+                })
+              }
             }
           } else if (typeof error.response === 'string') {
             messages = [error.response]
