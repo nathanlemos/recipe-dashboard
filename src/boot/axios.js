@@ -3,7 +3,7 @@ import store from '../store'
 // import Vue from 'vue'
 
 const axiosConfig = {
-  baseURL: 'http://127.0.0.1:8000/api/',
+  baseURL: 'https://nate-recipes.herokuapp.com/api/',
   timeout: 30000
 }
 

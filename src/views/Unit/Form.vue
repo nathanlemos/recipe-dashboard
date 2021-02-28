@@ -5,13 +5,14 @@
     </h1>
     <form action="javascript:;" @submit.prevent="submit()">
       <div class="grid">
-        <div class="col-12">
+        <div class="col-4">
           <div class="form-group">
               <label for="">Name:</label>
               <input type="text" placeholder="Name" v-model="model.name">
           </div>
         </div>
-        <div class="col-12 lg-only">
+        <div class="col-8"></div>
+        <div class="col-4 lg-only">
           <button class="btn" type="submit">{{ isEditing ? 'Update' : 'Create' }}</button>
         </div>
       </div>
