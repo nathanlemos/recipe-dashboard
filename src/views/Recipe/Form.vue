@@ -64,7 +64,9 @@
                   <tbody>
                       <tr v-for="item in ingredients" :key="item.index">
                       <td>
-                          <button type="button" @click="remove(item.index)">remove</button>
+                          <button class="btn-table-remove" type="button" @click="remove(item.index)">
+                            <i class="icon-trash"></i>
+                          </button>
                       </td>
                       <td>
                         {{item.name}}

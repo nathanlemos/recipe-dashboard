@@ -39,10 +39,10 @@ body, html {
 .btn {
     width: 100%;
     font-size: 16px;
-    padding: 8px;
+    padding: 8px 5px;
     background-color: $secondary;
     border: 0;
-    color: white;
+    color: $white;
     border-radius: $borderRadius;
     cursor: pointer;
 
@@ -61,16 +61,31 @@ body, html {
     }
 
     thead {
-        background-color: $gray2;
+        background-color: $gray1;
         td {
-            color: white;
+            color: $black;
         }
     }
 
     tbody {
-        tr:nth-child(odd) {
-            background-color: $gray1;
+        tr {
+            border-bottom: solid 1px $gray1;
         }
+        tr:nth-child(odd) {
+            background-color: $gray0;
+        }
+    }
+}
+
+.btn-table-remove{
+    border: 0;
+    background-color: $secondary;
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+
+    i {
+        color: white;
     }
 }
 
@@ -154,10 +169,11 @@ body, html {
     }
 
     input, textarea, select {
-        border: solid 1px $gray2;
-        font-size: 16px;
-        padding: 5px;
+        border: solid 1px $gray1;
+        background-color: $gray0;
+        padding: 8px 5px;
         border-radius: $borderRadius;
+        font-size: 16px;
 
         &:focus {
             outline: none !important;
