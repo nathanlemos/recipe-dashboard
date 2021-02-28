@@ -3,19 +3,20 @@
       <div class="navbar-container">
         <div class="navbar-container-main">
           <div class="sm-only">
-            <a href="javascript:;" @click="isShowingMobileMenu = !isShowingMobileMenu">&#9776;</a>
+            <a href="javascript:;" @click.stop="isShowingMobileMenu = !isShowingMobileMenu">&#9776;</a>
           </div>
           <div :class="isShowingMobileMenu ? 'lg-only main-menu' : 'main-menu'">
             <span class="badge no-select">
               Welcome{{user ? ', '+user.username : ''}}
             </span>
-            <router-link class="no-select" to="/recipe">Recipe</router-link>
-            <router-link class="no-select" to="/unit">Units</router-link>
-            <router-link class="no-select" to="/ingredient">Ingredients</router-link>
+            <router-link @click.stop="isShowingMobileMenu = false" class="no-select" to="/recipe">Recipe</router-link>
+            <router-link @click.stop="isShowingMobileMenu = false" class="no-select" to="/unit">Units</router-link>
+            <router-link @click.stop="isShowingMobileMenu = false" class="no-select" to="/ingredient">Ingredients</router-link>
+            <a class="no-select sm-only" href="javascript:;" @click.prevent="logoff">Logout</a>
           </div>
         </div>
         <div>
-            <a class="no-select" href="javascript:;" @click.prevent="logoff">Logout</a>
+            <a class="no-select lg-only" href="javascript:;" @click.prevent="logoff">Logout</a>
         </div>
       </div>
     </div>
@@ -31,7 +32,7 @@ export default {
 
   data () {
     return {
-      isShowingMobileMenu: false
+      isShowingMobileMenu: true
     }
   },
 
@@ -94,11 +95,10 @@ export default {
       a {
         display: block;
         width: 100%;
-        background-color: $primary;
         border-bottom: solid 1px $gray0;
 
         &:hover {
-          background-color: $secondary;
+          background-color: $primary;
         }
       }
     }
