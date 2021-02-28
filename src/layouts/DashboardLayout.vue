@@ -7,7 +7,8 @@
           </div>
           <div :class="isShowingMobileMenu ? 'lg-only main-menu' : 'main-menu'">
             <span class="badge no-select">
-              Welcome{{user ? ', '+user.username : ''}}
+              <i class="icon-user"></i>
+              welcome{{user ? ', '+user.username : ''}}
             </span>
             <router-link @click.stop="isShowingMobileMenu = false" class="no-select" to="/recipe">Recipe</router-link>
             <router-link @click.stop="isShowingMobileMenu = false" class="no-select" to="/unit">Units</router-link>
@@ -16,7 +17,9 @@
           </div>
         </div>
         <div>
-            <a class="no-select lg-only" href="javascript:;" @click.prevent="logoff">Logout</a>
+            <a class="no-select lg-only" href="javascript:;" @click.prevent="logoff">
+              <i class="icon-logout"></i>
+            </a>
         </div>
       </div>
     </div>
@@ -73,6 +76,10 @@ export default {
       color: white;
       padding: 15px;
       border-right: solid 1px $primary;
+
+      i {
+        color: white;
+      }
     }
 
     a {

@@ -71,7 +71,7 @@ export default {
   height: 32px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid $secondary;
+  border: 2px solid $secondary;
   border-color: $secondary transparent $secondary transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }

@@ -4,27 +4,43 @@
        <div class="col-3"></div>
        <div class="col-6">
           <div class="details-container">
-            <h1 class="h1">
-              <strong>{{model.name}}</strong>
-            </h1>
-            <h3>
-              <strong>Total cost:</strong> €{{totalCost}}
-            </h3>
-            <h2 class="subtitle">
-              Ingredientes
-            </h2>
-            <p v-for="ingredient in model.ingredients" :key="ingredient.id">
-              <strong>{{ingredient.quantity}} {{ingredient.unit.name}}</strong> {{ingredient.name}}
-            </p>
+            <div class="main-actions">
+              <div>
+                <i class="icon-heart"></i>
+              </div>
+              <div>
+                <i class="icon-drawer"></i>
+              </div>
+              <div>
+                <i class="icon-share"></i>
+              </div>
+            </div>
+            <div class="details-container-info">
+              <h1 class="h1">
+                <strong>{{model.name}}</strong>
+              </h1>
+              <h3>
+                <strong>Total cost:</strong> €{{totalCost}}
+              </h3>
+              <h2 class="subtitle">
+                Ingredientes
+              </h2>
+              <p v-for="ingredient in model.ingredients" :key="ingredient.id">
+                <strong>{{ingredient.quantity}} {{ingredient.unit.name}}</strong> {{ingredient.name}}
+              </p>
 
-            <h2 class="subtitle">
-              Description
-            </h2>
-            <p>
-              {{ model.description }}
-            </p>
-
-            <button class="btn" type="button" @click="document.print()">Print</button>
+              <h2 class="subtitle">
+                Description
+              </h2>
+              <p>
+                {{ model.description }}
+              </p>
+            </div>
+            <div class="details-container-actions">
+              <button class="btn" type="button" @click="document.print()">
+                <i class="icon-printer"></i>
+              </button>
+            </div>
           </div>
        </div>
    </div>
@@ -76,29 +92,44 @@ export default {
 .details-container {
   border: solid 1px $gray2;
   border-radius: 4px;
-  padding: 15px;
 
-  .h1 {
-    margin-bottom: 15px;
+  .main-actions {
+    display: flex;
+
+    div {
+      padding: 15px;
+    }
   }
+  .details-container-info {
+    padding: 15px;
 
-  h3 {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    color: $primary !important;
+    .h1 {
+      margin-bottom: 15px;
+    }
 
-    strong {
-      color: $gray2;
-      text-transform: uppercase;
+    h3 {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      color: $primary !important;
+
+      strong {
+        color: $gray2;
+        text-transform: uppercase;
+      }
+    }
+
+    h2 {
+      font-size: 16px;
+      border-bottom: solid 1px $gray2;
+      padding-bottom: 15px;
+      padding-top: 30px;
     }
   }
 
-  h2 {
-    font-size: 16px;
-    border-bottom: solid 1px $gray2;
-    padding-bottom: 15px;
-    padding-top: 30px;
+  .details-container-actions {
+    padding: 15px;
+    background-color: $secondary;
   }
 }
 </style>

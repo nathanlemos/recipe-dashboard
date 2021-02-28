@@ -46,6 +46,10 @@ body, html {
     border-radius: $borderRadius;
     cursor: pointer;
 
+    i {
+        color: $white;
+    }
+
     &:hover {
         background-color: $primary;
     }
