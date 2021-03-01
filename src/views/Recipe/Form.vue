@@ -170,6 +170,16 @@ export default {
     },
 
     add () {
+      const alreadyExists = this.ingredients.find(i => parseInt(i.details.ingredient_id) === parseInt(this.newIngredient.ingredient.details.id))
+
+      if (alreadyExists) {
+        return this.handleSubmitRequestError({
+          response: {
+            messages: ['The selected ingredient is already in the recipe']
+          }
+        })
+      }
+
       if (!this.newIngredient.ingredient || !this.newIngredient.quantity || isNaN(this.newIngredient.quantity)) {
         return this.handleSubmitRequestError({
           response: {
