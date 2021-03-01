@@ -1,6 +1,6 @@
-# RECIPE MANAGER - API Client
+# RECIPE MANAGER - CLIENT
 
-This is the Vue.js API client of my tecnical assessment.
+This is the Vue.js client of my tecnical assessment.
 
 ## External libraries
 To do this project, I chose to use Vue.js only with personal code instead of just get some UI sets or  external libraries. However, I had  to use Simple Line Icons, which added i nice set of icons to the code and Axios, which is a great HTTP client.
