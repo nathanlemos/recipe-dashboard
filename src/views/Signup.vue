@@ -71,6 +71,7 @@ export default {
       }
 
       this.axios.post('auth/register', this.$data).then(res => {
+        this.showMessage('success', ['Done!'])
         this.$router.push({ name: 'signin' })
       }).catch(error => this.handleResponseErrorPayload(error))
     }
