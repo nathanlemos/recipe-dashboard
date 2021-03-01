@@ -21,7 +21,7 @@
         <div class="col-4">
           <div class="form-group">
               <label for="">Referencial quantity:</label>
-              <input type="text" placeholder="Base quantity" v-model="model.avg_quantity">
+              <input type="text" placeholder="Base quantity" v-model="model.avg_quantity" inputmode="numeric">
           </div>
         </div>
         <div class="col-4">
@@ -35,7 +35,7 @@
         <div class="col-4">
           <div class="form-group">
               <label for="">Price per referencial quantity:</label>
-              <input type="text" placeholder="Price per referencial quantity" v-model="model.cost">
+              <input type="text" placeholder="Price per referencial quantity" v-model="model.cost" inputmode="numeric">
           </div>
         </div>
         <div class="col-12 lg-only">

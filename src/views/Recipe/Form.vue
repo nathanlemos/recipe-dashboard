@@ -43,7 +43,7 @@
               <div class="col-2">
                 <div class="form-group">
                   <label for="">Qt:</label>
-                  <input type="text" placeholder="Qt" v-model="newIngredient.quantity">
+                  <input type="text" placeholder="Qt" v-model="newIngredient.quantity" inputmode="numeric">
                 </div>
               </div>
               <div class="col-12">
@@ -170,7 +170,9 @@ export default {
     },
 
     add () {
-      const alreadyExists = this.ingredients.find(i => parseInt(i.details.ingredient_id) === parseInt(this.newIngredient.ingredient.details.id))
+      const alreadyExists = this.ingredients.find(i => {
+        return parseInt(i.details.ingredient_id) === parseInt(this.newIngredient.ingredient.details.id)
+      })
 
       if (alreadyExists) {
         return this.handleSubmitRequestError({
@@ -189,6 +191,8 @@ export default {
       }
 
       const index = this.ingredients.length
+
+      this.newIngredient.ingredient.details.ingredient_id = this.newIngredient.ingredient.value
 
       this.ingredients.push({
         index: index,
