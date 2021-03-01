@@ -26,7 +26,14 @@
                 Ingredientes
               </h2>
               <p v-for="ingredient in model.ingredients" :key="ingredient.id">
-                <strong>{{ingredient.quantity}} {{ingredient.unit.name}}</strong> {{ingredient.name}}
+                <strong>{{ingredient.quantity}} {{ingredient.unit.name}}</strong> {{ingredient.name}} -
+                €{{formatCost(calculateCost({
+                  quantity: ingredient.quantity,
+                  details: {
+                    cost: ingredient.cost,
+                    avg_quantity: ingredient.avg_quantity
+                    }
+                  }))}}
               </p>
 
               <h2 class="subtitle">
