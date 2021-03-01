@@ -5,6 +5,8 @@ This is the Vue.js API client of my tecnical assessment.
 ## External libraries
 To do this project, I chose to use Vue.js only with personal code instead of just get some UI sets or  external libraries. However, I had  to use Simple Line Icons, which added i nice set of icons to the code and Axios, which is a great HTTP client.
 
+You can check this resources here:
+
 
 - [Axios](https://github.com/axios/axios)
 - [Simple Line Icons](https://simplelineicons.github.io)
