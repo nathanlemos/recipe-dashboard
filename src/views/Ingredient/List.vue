@@ -1,12 +1,17 @@
 <template>
   <div class="inner-container">
+    <breadcrumbs />
+
     <h1 class="h1">
       <strong>Ingredients</strong> manager
     </h1>
+
     <fab icon="&plus;" @click="navigateToAdd" />
+
     <div class="mb-1">
       <search-box placeholder="Search by name or article number" @search="setSearchText" />
     </div>
+
     <div class="list-grid-container">
       <div class="grid">
         <div class="col-4">

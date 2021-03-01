@@ -1,5 +1,7 @@
 <template>
   <div class="inner-container">
+    <breadcrumbs routerName="ingredientList" name="Ingredients list" />
+
     <h1 class="h1">
       <strong>{{ isEditing ? 'Update' : 'Create' }}</strong> ingredient
     </h1>

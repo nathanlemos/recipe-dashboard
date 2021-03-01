@@ -1,5 +1,10 @@
 <template>
   <div class="inner-container">
+    <div class="grid">
+      <div class="col-12">
+        <breadcrumbs routerName="recipeList" name="Recipes list" />
+      </div>
+    </div>
    <div class="grid">
        <div class="col-3"></div>
        <div class="col-6">

@@ -1,5 +1,6 @@
 <template>
   <div class="inner-container">
+    <breadcrumbs routerName="recipeList" name="Recipes list" />
     <h1 class="h1">
       <strong>{{ isEditing ? 'Update' : 'Create' }}</strong> recipe
     </h1>
@@ -113,8 +114,6 @@ import crudMixin from '../../mixins/crud'
 import messageMixin from '../../mixins/message'
 import generalMixin from '../../mixins/general'
 
-const endpoint = 'recipes/'
-
 export default {
   name: 'RecipeForm',
   data () {
@@ -156,7 +155,7 @@ export default {
         return this.handleSubmitRequestError(canSubmitResponse)
       }
 
-      const request = !this.model.id ? this.axios.post(endpoint, this.model) : this.axios.put(endpoint + this.model.id, this.model)
+      const request = !this.model.id ? this.axios.post(this.endpoint, this.model) : this.axios.put(this.endpoint + this.model.id, this.model)
 
       request.then(res => {
         this.showMessage('success', ['Done!'])

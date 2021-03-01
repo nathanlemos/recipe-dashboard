@@ -1,9 +1,13 @@
 <template>
   <div class="inner-container">
+    <breadcrumbs />
+
     <h1 class="h1">
       <strong>Units</strong> manager
     </h1>
+
     <fab icon="&plus;" @click="navigateToAdd" />
+
     <div class="mb-1">
       <search-box @search="setSearchText" />
     </div>
